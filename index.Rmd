@@ -78,14 +78,15 @@ Figure: Interactive 3D globe maping on downscaled GDP in 2000. You can pan and z
 
 The GDPs for SSP 1–5 between 2000 and 2100 by 10 years are estimated by 2160 x 4320 grids, each of which are 1/12-degree grids, covering the globe. The GDP estimates in each year in each SSP are recorded as a GeoTIff image with resolution of 2160 x 4320. GeoTiff is a Tiff image with spatial coordinates for each grid cell; the coordinates are given by longitude and latitude measured by World Geodetic System 1984 (WGS84).
 
-[please click here: tiff and csv files](https://www.dropbox.com/sh/d598disl4v97tnn/AAAnZmMCY61PcLLEdNsXgW4Ta?dl=0)
+***please click here: tiff and csv files***
 
 And also, you can download 3D globemap html files on the five SSPs (2000-2100) from the link below.
 
-[please click here: 3D globemaps](https://www.dropbox.com/sh/qw8h02vd33hcl1p/AADUciV3ldCJMriHnVoU6qlpa?dl=0)
+***please click here: 3D globemaps***
 
 ## References
-- Daisuke Murakami, Yoshiki Yamagata, Takahiro Yoshida (202X) Gridded GDP projections compatible with the five SSPs (Shared Socioeconomic Pathways). Submitted to *Nature Scientific Data*. 
+- Daisuke Murakami, Yoshiki Yamagata, Takahiro Yoshida (202X) Gridded GDP projections compatible with the five SSPs (Shared Socioeconomic Pathways). Submitted to a journal. 
+
 
 `r if (knitr:::is_html_output()) '
 
