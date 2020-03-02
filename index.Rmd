@@ -17,7 +17,8 @@ description: "This is a website for showing and providing our estimated GDP with
 
 Historical and future spatially explicit population and GDP data are critically important for analysing climate risks in the future. Population projection exists such as HYDE database, but GDP projection does not exist especially SSP compatible scenarios. So, we have estimated GDP with 1/12-degree grid-scale during 1850—2100 by 10 year intervals. National GDP data was downscaled to grids using the past data until 2010 and future data until 2100 of SSPs. In the downscaling algorithm, we first assumed spatial and economic interactions among cities and projected future different urban growth patterns according to SSPs. Then, the projected urban growth patterns and other auxiliary geographic data (land cover, road network, etc.) were used to estimate the gridded GDP distributions. Finally, the estimated GDPs were visualized in 3D for the intuitive understanding for multiple stakeholders. Our results suggested that spatial pattern of urban and peri-urban GDP could change considerably depending on SSPs. For example, GDP of SSP1 shows rapid urban growth nearby major cities while SSP3 shows lower level of urban growth nearby the cities, and SSP5 shows extreme urban dispersion.
 
-Methods which we used are detaily described in our forthcoming paper: Murakami, Yamagata and Yoshida (202X). Please see the reference section below.
+Methods which we used are detaily described in our forthcoming paper:
+Murakami, Yoshida, and Yamagata (202X). Please see the reference section below.
 
 ## Visualization
 
