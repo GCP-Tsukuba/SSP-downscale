@@ -1,5 +1,6 @@
 book_filename: "bookdown-demo"
 output_dir: docs
+always_allow_html: yes
 language:
   ui:
     chapter_name: " "
