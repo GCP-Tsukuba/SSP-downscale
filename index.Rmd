@@ -26,6 +26,10 @@ Methods which we used are detaily described in our forthcoming paper:
 
 ```{r setup, include=F, echo=F, warning=F}
 knitr::opts_chunk$set(echo = TRUE)
+
+#install.packages("webshot",dep=T)
+#webshot::install_phantomjs()
+#library(webshot)
 library(colorRamps)
 library(data.table)
 library(dplyr)
@@ -57,7 +61,7 @@ a <- fread(paste("C:/Users/yoshida.takahiro/Dropbox/A_Rcodes/SSP/CSV_hp/",list.f
      filter(pid==0)
 set.col <-  matlab.like(11)[a$gdp.cut]
 A <- globejs(lat=a$latitude, long=a$longitude,
-        val=a$gdp/70000000,    # Bar height 
+        val=a$gdp/70000000,    # to adjust bar height 
         color=set.col,
         pointsize=1.6,
         atmosphere=F)
@@ -114,11 +118,11 @@ dat <- dat %>%
         breaks=c(0,10^4,10^5,10^6,2.5*10^6,5.0*10^6,
                  10^7,2.5*10^7,5.0*10^7,10^8,10^9,max(gdp)), 
         include.lowest=TRUE))) %>%
-       mutate(pid=as.numeric(rownames(.))%%10) %>% # because data are too heavy.
+       mutate(pid=as.numeric(rownames(.))%%10) %>% # to avoid heavy calculation.
        filter(pid==0)
-3Dglobe <- globejs(lat=a$latitude, long=a$longitude,
-        val=a$gdp/70000000,
-        color=matlab.like(11)[a$gdp.cut],
+3Dglobe <- globejs(lat=dat$latitude, long=dat$longitude,
+        val=dat$gdp/70000000, # to adjust bar height 
+        color=matlab.like(11)[dat$gdp.cut],
         pointsize=1.6,
         atmosphere=F)
 3Dglobe        
