@@ -1,4 +1,4 @@
-book_filename: "bookdown-demo"
+book_filename: "SSPs-downscale"
 output_dir: docs
 always_allow_html: yes
 language:
