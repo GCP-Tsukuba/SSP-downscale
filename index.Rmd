@@ -17,9 +17,9 @@ description: "This is a website for showing and providing our estimated GDP with
 Estimated GDPs by 1/12-degree grids during 1850—2100 by 10 year intervals. In the estimation, national GDP data (past data until 2010; future projection under SSPs after 2020) is downscaled considering spatial and economic interactions among cities, urban growth patterns compatible with SSPs, and other auxiliary geographic data (land cover, road network, etc.). Methods which we used are detaily described in our forthcoming paper and data: **Murakami, Yoshida, and Yamagata (202X)**.
 
 
-![Figure: Europe in 2D](Europe.png)
+![Figure: Europe in 2D](Euro_2-5D.png)
 
-![Figure: Asia in 2D](Asia.png)
+![Figure: Asia in 2D](Asia_2-5D.png)
 
 
 ```{r setup, include=F, echo=F, warning=F}
