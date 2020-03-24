@@ -93,6 +93,8 @@ We used [**R**](https://www.r-project.org/) for the 2.5D and 3D globe visualizat
 ## 2.5D visualization
 ## ------------------
 
+library(mapdeck)
+
 # please wait a moment!
 
 
