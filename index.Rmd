@@ -17,9 +17,9 @@ description: "This is a website for showing and providing our estimated GDP with
 Estimated GDPs by 1/12-degree grids during 1850—2100 by 10 year intervals. In the estimation, national GDP data (past data until 2010; future projection under SSPs after 2020) is downscaled considering spatial and economic interactions among cities, urban growth patterns compatible with SSPs, and other auxiliary geographic data (land cover, road network, etc.). Methods which we used are detaily described in our forthcoming paper and data: **Murakami, Yoshida, and Yamagata (202X)**.
 
 
-![Figure: Europe in 2D](Euro_2-5D.png)
+![Figure: Europe in 2.5D](Euro_2-5D.png)
 
-![Figure: Asia in 2D](Asia_2-5D.png)
+![Figure: Asia in 2.5D](Asia_2-5D.png)
 
 
 ```{r setup, include=F, echo=F, warning=F}
@@ -80,24 +80,15 @@ Figure: Interactive 3D globe maping on downscaled GDP. You can pan and zoom the 
 
 The GDPs for SSP 1–5 between 1850 and 2100 by 10 years are estimated by 2160 x 4320 grids, each of which are 1/12-degree grids, covering the globe. The GDP estimates in each year in each SSP are recorded as a GeoTIff image with resolution of 2160 x 4320. GeoTiff is a Tiff image with spatial coordinates for each grid cell; the coordinates are given by longitude and latitude measured by World Geodetic System 1984 (WGS84).
 
-***GeoTiff: please click here*** (please wait a moment. Now, we are uploading the data)
+***GeoTiff: please click here*** (please wait a moment. Now, the data are under review in a journal.)
 
 ----
 
 ## Code for visualization {-}
 
-We used [**R**](https://www.r-project.org/) for the 2.5D and 3D globe visualization. 
+We used [**R**](https://www.r-project.org/) for the 3D globe visualization. 
 
 ```
-## ------------------
-## 2.5D visualization
-## ------------------
-
-library(mapdeck)
-
-# please wait a moment!
-
-
 ## ------------------
 ## 3D visualization
 ## ------------------
