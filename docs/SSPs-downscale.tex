@@ -1,38 +1,57 @@
-\documentclass[]{book}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Gridded GDP projections compatible with the five SSPs},
-            pdfauthor={Global Carbon Project (Tsukuba International Office), NIES and ISM, Japan},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apalike}
-\usepackage{longtable,booktabs}
-\usepackage{graphicx,grffile}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Gridded GDP projections compatible with the five SSPs},
+  pdfauthor={Daisuke Murakami, Takahiro Yoshida, Yoshiki Yamagata},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -41,52 +60,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{Gridded GDP projections compatible with the five SSPs}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-    \author{Global Carbon Project (Tsukuba International Office), NIES and ISM, Japan}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{February, 2020}
-
 \usepackage{booktabs}
 \usepackage{amsthm}
 \makeatletter
@@ -95,6 +76,15 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Gridded GDP projections compatible with the five SSPs}
+\author{\href{https://scholar.google.co.jp/citations?hl=en\&user=QyffkL0AAAAJ}{Daisuke Murakami}, \href{https://scholar.google.co.jp/citations?hl=en\&user=bYbQYeUAAAAJ}{Takahiro Yoshida}, \href{https://scholar.google.co.jp/citations?user=3dOqbmoAAAAJ\&hl=en\&oi=ao}{Yoshiki Yamagata}}
+\date{October, 2021}
 
 \begin{document}
 \maketitle
@@ -107,7 +97,16 @@
 \chapter*{Downscaling GDP}\label{downscaling-gdp}}
 \addcontentsline{toc}{chapter}{Downscaling GDP}
 
-Estimated GDPs by 1/12-degree grids during 1850---2100 by 10 year intervals. In the estimation, national GDP data (past data until 2010; future projection under SSPs after 2020) is downscaled considering spatial and economic interactions among cities, urban growth patterns compatible with SSPs, and other auxiliary geographic data (land cover, road network, etc.). Methods which we used are detaily described in our forthcoming paper and data: \textbf{Murakami, Yoshida, and Yamagata (202X)}.
+Estimated GDPs by 1/12-degree grids during 1850---2100 by 10 year intervals. In the estimation, national GDP data (past data until 2010; future projection under SSPs after 2020) is downscaled considering spatial and economic interactions among cities, urban growth patterns compatible with SSPs, and other auxiliary geographic data (land cover, road network, etc.). Methods which we used are detaily described in our paper and data.
+
+\begin{itemize}
+\tightlist
+\item
+  Daisuke Murakami, Takahiro Yoshida, Yoshiki Yamagata (2021)
+  \textbf{Gridded GDP projections compatible with the five SSPs (shared socioeconomic pathways).}
+  \emph{Frontiers in Built Environment}, in press.
+  DOI: 10.3389/fbuil.2021.760306 {[}\href{https://www.frontiersin.org/articles/10.3389/fbuil.2021.760306/abstract}{LINK}{]} {[}\href{https://figshare.com/articles/dataset/Gridded_GDP_projections_compatible_with_the_five_SSPs_Shared_Socioeconomic_Pathways_/12016506/1}{DATA}{]}
+\end{itemize}
 
 \begin{figure}
 \centering
@@ -125,11 +124,9 @@ Estimated GDPs by 1/12-degree grids during 1850---2100 by 10 year intervals. In 
 ## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 \end{verbatim}
 
-\hypertarget{4FsoTPS1rT}{}
-
 Figure: Interactive 3D globe maping on downscaled GDP. You can pan and zoom the globe by mouse-over.
 
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{data-download}{%
 \section*{Data download}\label{data-download}}
@@ -137,9 +134,9 @@ Figure: Interactive 3D globe maping on downscaled GDP. You can pan and zoom the 
 
 The GDPs for SSP 1--5 between 1850 and 2100 by 10 years are estimated by 2160 x 4320 grids, each of which are 1/12-degree grids, covering the globe. The GDP estimates in each year in each SSP are recorded as a GeoTIff image with resolution of 2160 x 4320. GeoTiff is a Tiff image with spatial coordinates for each grid cell; the coordinates are given by longitude and latitude measured by World Geodetic System 1984 (WGS84).
 
-\textbf{\emph{GeoTiff: please click here}} (please wait a moment. Now, the data are under review in a journal.)
+\textbf{\emph{GeoTiff}}: {[}\href{https://figshare.com/articles/dataset/Gridded_GDP_projections_compatible_with_the_five_SSPs_Shared_Socioeconomic_Pathways_/12016506/1}{please click here}{]}
 
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{code-for-visualization}{%
 \section*{Code for visualization}\label{code-for-visualization}}
@@ -183,19 +180,8 @@ dat <- dat %>%
 3Dglobe        
 \end{verbatim}
 
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
-
-\begin{itemize}
-\tightlist
-\item
-  Daisuke Murakami, Takahiro Yoshida, Yoshiki Yamagata (202X) \textbf{Gridded GDP projections compatible with the five SSPs (Shared Socioeconomic Pathways)}. Submitted to \emph{a journal}.
-\end{itemize}
-
-\bibliography{book.bib,packages.bib}
-
+  \bibliography{book.bib,packages.bib}
 
 \end{document}

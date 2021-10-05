@@ -1,7 +1,7 @@
 --- 
 title: Gridded GDP projections compatible with the five SSPs
-author: "Global Carbon Project (Tsukuba International Office), NIES and ISM, Japan"
-date: "February, 2020"
+author: "[Daisuke Murakami](https://scholar.google.co.jp/citations?hl=en&user=QyffkL0AAAAJ), [Takahiro Yoshida](https://scholar.google.co.jp/citations?hl=en&user=bYbQYeUAAAAJ), [Yoshiki Yamagata](https://scholar.google.co.jp/citations?user=3dOqbmoAAAAJ&hl=en&oi=ao)"
+date: "October, 2021"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 always_allow_html: yes
@@ -14,7 +14,14 @@ description: "This is a website for showing and providing our estimated GDP with
 
 # Downscaling GDP {-}
 
-Estimated GDPs by 1/12-degree grids during 1850—2100 by 10 year intervals. In the estimation, national GDP data (past data until 2010; future projection under SSPs after 2020) is downscaled considering spatial and economic interactions among cities, urban growth patterns compatible with SSPs, and other auxiliary geographic data (land cover, road network, etc.). Methods which we used are detaily described in our forthcoming paper and data: **Murakami, Yoshida, and Yamagata (202X)**.
+Estimated GDPs by 1/12-degree grids during 1850—2100 by 10 year intervals. In the estimation, national GDP data (past data until 2010; future projection under SSPs after 2020) is downscaled considering spatial and economic interactions among cities, urban growth patterns compatible with SSPs, and other auxiliary geographic data (land cover, road network, etc.). Methods which we used are detaily described in our paper and data.
+
+- Daisuke Murakami, Takahiro Yoshida, Yoshiki Yamagata (2021) <br> 
+**Gridded GDP projections compatible with the five SSPs (shared socioeconomic pathways).** <br>
+*Frontiers in Built Environment*, in press. <br> 
+DOI: 10.3389/fbuil.2021.760306 [[LINK](https://www.frontiersin.org/articles/10.3389/fbuil.2021.760306/abstract)] [[DATA](https://figshare.com/articles/dataset/Gridded_GDP_projections_compatible_with_the_five_SSPs_Shared_Socioeconomic_Pathways_/12016506/1)] <br>
+
+
 
 
 ![Figure: Europe in 2.5D](Euro_2-5D.png)
@@ -44,13 +51,13 @@ library(tidyr)
 
 #set.dir <- "D:/Dropbox/A_Rcodes/SSP/HTML_hp/"
 ################
-list.f <- list.files("C:/Users/yoshida.takahiro/Dropbox/A_Rcodes/SSP/CSV_hp")
+list.f <- list.files("C:/Users/yoshida/Dropbox/A_Rcodes/SSP/CSV_hp")
 #list.f <- list.files("D:/Dropbox/A_Rcodes/SSP/CSV_hp")
 list.f2 <- gsub("\\.[0-9A-Za-z]+$", "", list.f)
 
 #for(i in 1:length(list.f)){
 i=1
-a <- fread(paste("C:/Users/yoshida.takahiro/Dropbox/A_Rcodes/SSP/CSV_hp/",list.f[i],sep="")) %>%
+a <- fread(paste("C:/Users/yoshida/Dropbox/A_Rcodes/SSP/CSV_hp/",list.f[i],sep="")) %>%
      mutate(gdp=if_else(gdp>0,gdp,0)) %>%
      filter(gdp>0) %>%
      mutate(gdp.cut=as.numeric(cut(gdp,breaks=c(0, 10000, 100000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000, 1000000000, max(gdp)), 
@@ -80,7 +87,7 @@ Figure: Interactive 3D globe maping on downscaled GDP. You can pan and zoom the 
 
 The GDPs for SSP 1–5 between 1850 and 2100 by 10 years are estimated by 2160 x 4320 grids, each of which are 1/12-degree grids, covering the globe. The GDP estimates in each year in each SSP are recorded as a GeoTIff image with resolution of 2160 x 4320. GeoTiff is a Tiff image with spatial coordinates for each grid cell; the coordinates are given by longitude and latitude measured by World Geodetic System 1984 (WGS84).
 
-***GeoTiff: please click here*** (please wait a moment. Now, the data are under review in a journal.)
+***GeoTiff***: [[please click here](https://figshare.com/articles/dataset/Gridded_GDP_projections_compatible_with_the_five_SSPs_Shared_Socioeconomic_Pathways_/12016506/1)]
 
 ----
 
@@ -125,10 +132,6 @@ dat <- dat %>%
 ```
 
 ----
-
-## References {-}
-- Daisuke Murakami, Takahiro Yoshida, Yoshiki Yamagata (202X) **Gridded GDP projections compatible with the five SSPs (Shared Socioeconomic Pathways)**. Submitted to *a journal*. 
-
 
 `r if (knitr:::is_html_output()) '
 
