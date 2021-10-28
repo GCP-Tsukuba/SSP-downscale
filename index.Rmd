@@ -18,8 +18,8 @@ Estimated GDPs by 1/12-degree grids during 1850—2100 by 10 year intervals. In 
 
 - Daisuke Murakami, Takahiro Yoshida, Yoshiki Yamagata (2021) <br> 
 **Gridded GDP projections compatible with the five SSPs (shared socioeconomic pathways).** <br>
-*Frontiers in Built Environment*, in press. <br> 
-DOI: 10.3389/fbuil.2021.760306 [[LINK](https://www.frontiersin.org/articles/10.3389/fbuil.2021.760306/abstract)] [[DATA](https://figshare.com/articles/dataset/Gridded_GDP_projections_compatible_with_the_five_SSPs_Shared_Socioeconomic_Pathways_/12016506/1)] <br>
+*Frontiers in Built Environment*, 7, 760306. <br> 
+DOI: 10.3389/fbuil.2021.760306 [[LINK](https://www.frontiersin.org/articles/10.3389/fbuil.2021.760306/full)] [[DATA](https://figshare.com/articles/dataset/Gridded_GDP_projections_compatible_with_the_five_SSPs_Shared_Socioeconomic_Pathways_/12016506/1)] <br>
 
 
 
@@ -50,14 +50,16 @@ library(threejs)
 library(tidyr)
 
 #set.dir <- "D:/Dropbox/A_Rcodes/SSP/HTML_hp/"
+
 ################
-list.f <- list.files("C:/Users/yoshida/Dropbox/A_Rcodes/SSP/CSV_hp")
+list.f <- list.files("M:/Strage1/Dropbox/A_Rcodes/SSP/CSV_hp")
+#list.f <- list.files("C:/Users/yoshida/Dropbox/A_Rcodes/SSP/CSV_hp")
 #list.f <- list.files("D:/Dropbox/A_Rcodes/SSP/CSV_hp")
 list.f2 <- gsub("\\.[0-9A-Za-z]+$", "", list.f)
 
 #for(i in 1:length(list.f)){
 i=1
-a <- fread(paste("C:/Users/yoshida/Dropbox/A_Rcodes/SSP/CSV_hp/",list.f[i],sep="")) %>%
+a <- fread(paste("M:/Strage1/Dropbox/A_Rcodes/SSP/CSV_hp/",list.f[i],sep="")) %>%
      mutate(gdp=if_else(gdp>0,gdp,0)) %>%
      filter(gdp>0) %>%
      mutate(gdp.cut=as.numeric(cut(gdp,breaks=c(0, 10000, 100000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000, 1000000000, max(gdp)), 
